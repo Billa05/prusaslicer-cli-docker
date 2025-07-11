@@ -4,8 +4,8 @@ This project provides a streamlined, terminal-based workflow for slicing 3D mode
 
 ## Project Structure
 
-- **dockerfile**: Builds a Docker image with PrusaSlicer CLI and all dependencies.
-- **PrusaSlicer/**: The main PrusaSlicer source (cloned during Docker build).
+- **dockerfile**: (Optional) For building your own Docker image with PrusaSlicer CLI and all dependencies.
+- **PrusaSlicer/**: The main PrusaSlicer source (cloned during Docker build if building locally).
 - **PrusaSlicer-settings-prusa-fff/**: Official PrusaSlicer FFF (Fused Filament Fabrication) printer/filament profiles, used for configuration.
 - **models/**: Place your `.stl` models, `.ini` config files, and output `.gcode` here.
 - **slice.sh**: Bash script to run slicing jobs via Docker.
@@ -15,10 +15,10 @@ This project provides a streamlined, terminal-based workflow for slicing 3D mode
 
 ## Quick Start
 
-### 1. Build the Docker Image
+### 1. Pull the Docker Image
 
 ```sh
-docker build -t billa05/prusacli:latest .
+docker pull billa05/prusacli:latest
 ```
 
 ### 2. Prepare Your Files
@@ -77,9 +77,21 @@ To pass additional options, you can modify the `slice.sh` script or run the Dock
 
 ---
 
+## Optional: Build the Docker Image Locally
+
+If you want to build the Docker image yourself (for development or customization), you can do so with:
+
+```sh
+docker build -t billa05/prusacli:latest .
+```
+
+This will use the provided `dockerfile` to build the image from source.
+
+---
+
 ## References
 - [PrusaSlicer GitHub](https://github.com/prusa3d/PrusaSlicer)
-- [PrusaSlicer CLI Documentation](https://github.com/prusa3d/PrusaSlicer#command-line-interface)
+- [PrusaSlicer CLI Documentation](https://github.com/prusa3d/PrusaSlicer/wiki/Command-Line-Interface)
 - [PrusaSlicer-settings](https://github.com/prusa3d/PrusaSlicer-settings)
 
 ---
