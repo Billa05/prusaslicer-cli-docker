@@ -11,7 +11,7 @@ GCODE="gcode/${BASENAME}.gcode"
 STATS="stats/${BASENAME}_stats.txt"
 FINALJSON="output/${BASENAME}.json"
 
-docker run --rm \
+docker run --name prusaslicer-test \
   -v "$(pwd)/models:/models" \
   -v "$(pwd)/gcode:/gcode" \
   -v "$(pwd)/config:/config" \
