@@ -93,6 +93,19 @@ python3 parser.py <path/to/file.gcode>
 
 ---
 
+## Slicing Performance Comparison Folders
+
+The following folders contain slicing statistics for each model, generated on different hardware setups:
+
+- **vm_stats(2cores)/**: Contains stats files for each model sliced on a 2-core virtual machine.
+- **local_stats(16cores)/**: Contains stats files for each model sliced on a 16-core local machine.
+
+Each file (e.g., `cat_stats.txt`) includes metrics such as user time, system time, CPU utilization, and memory usage. These folders are useful for benchmarking and comparing slicing performance across different hardware.
+
+See the `stats_comparison.md` file for a summary table comparing the results from both environments.
+
+---
+
 ## Optional: Build the Docker Image Locally
 
 If you want to build the Docker image yourself (for development or customization), you can do so with:
