@@ -1,0 +1,4 @@
+	User time (seconds): 5.81
+	System time (seconds): 0.16
+	Percent of CPU this job got: 96%
+	Maximum resident set size (kbytes): 120784
