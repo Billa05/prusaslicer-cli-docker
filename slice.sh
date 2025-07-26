@@ -16,7 +16,3 @@ docker run --rm \
   -v "$(pwd)/stats:/stats" \
   billa05/prusacli:latest \
   -c "/usr/bin/time -v /app/prusa-slicer \"/models/$MODEL\" --load \"/config/$CONFIG\" --export-gcode --output \"/gcode/${BASENAME}.gcode\" --support-material --brim-width 8 2>&1 | grep -E 'User time|System time|Percent of CPU|Maximum resident set size' > \"/stats/${BASENAME}_stats.txt\""
-
-if [ $? -ne 0 ]; then
-  echo "Slicing failed for $MODEL" >> error.log
-fi
