@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# Usage: ./slice.sh <model.stl> <config.ini> <output.gcode> [stats.txt]
-# Example: ./slice.sh test_model.stl 2.2.17.ini test.gcode stats.txt
-
 MODEL="$1"         # e.g., test_model.stl
 CONFIG="$2"        # e.g., 2.2.17.ini
-BASENAME="${MODEL%.*}"  # e.g., test_model
+BASENAME="$(basename "${MODEL%.*}")"  # e.g., test_model
+
 
 GCODE="gcode/${BASENAME}.gcode"
 STATS="stats/${BASENAME}_stats.txt"
@@ -19,6 +17,6 @@ docker run --rm \
   billa05/prusacli:latest \
   -c "/usr/bin/time -v /app/prusa-slicer \"/models/$MODEL\" --load \"/config/$CONFIG\" --export-gcode --output \"/gcode/${BASENAME}.gcode\" --support-material --brim-width 8 2>&1 | grep -E 'User time|System time|Percent of CPU|Maximum resident set size' > \"/stats/${BASENAME}_stats.txt\""
 
-# Run parser.py to generate JSON summary
-python3 parser.py "gcode/${BASENAME}.gcode"
-mv "gcode/${BASENAME}.json" "output/${BASENAME}.json"
+if [ $? -ne 0 ]; then
+  echo "Slicing failed for $MODEL" >> error.log
+fi
