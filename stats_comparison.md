@@ -1,6 +1,7 @@
 # Slicing Performance Comparison: 2 Cores vs 16 Cores
 
-_All slicing jobs were executed in parallel (batch mode) on each machine._
+
+**Note:** All slicing jobs were executed in parallel (batch mode) on each machine and both machines used for benchmarking had 8GB of RAM.
 
 This table compares the slicing statistics for each model when run on a 2-core VM versus a 16-core local machine. Key differences:
 - **User time** is consistently lower on 16 cores, indicating faster computation.
